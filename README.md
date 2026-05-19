@@ -1,52 +1,117 @@
-# Real-Time Object Detection and Food Nutrition Analysis
+# 🍎 Real-Time Object Detection and Food Nutrition Analysis
 
-This project is an AI-powered **Real-Time Object Detection System** combined with a **Food Nutrition Analysis API** using Python.
-The application detects common objects from a live webcam feed and can also retrieve nutritional information about food items using the CalorieNinjas API.
+An AI-powered computer vision application that combines **real-time object detection** with **food nutrition analysis** using Python, YOLOv4-Tiny, OpenCV, and the CalorieNinjas API.
 
----
-
-## Features
-
-### Real-Time Object Detection
-
-* Detects common objects using webcam
-* Uses **YOLOv4-Tiny** for fast detection
-* Displays bounding boxes and labels
-* Provides voice feedback using Text-to-Speech
-* Stores unique detected objects
-
-### Food Nutrition Analysis
-
-* Retrieves nutrition information for food items
-* Uses the **CalorieNinjas API**
-* Displays:
-
-  * Saturated fat
-  * Total fat
-  * Carbohydrates
-  * Protein
-  * Sugar
-  * Sodium
-  * Cholesterol
+The system detects objects from a live webcam feed, announces detected objects through voice feedback, and retrieves nutrition information for food items using an external API.
 
 ---
 
-## Technologies Used
+# 📌 System Architecture
 
-* Python
-* OpenCV (`cv2`)
-* cvlib
-* YOLOv4-Tiny
-* gTTS
-* playsound
-* Requests API
-* CalorieNinjas API
+
+                         ┌──────────────────────┐
+                         │      Webcam          │
+                         │   Live Video Feed    │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │       OpenCV         │
+                         │  Capture Video Frame │
+                         └──────────┬───────────┘
+                                    │
+                                    ▼
+                         ┌──────────────────────┐
+                         │        cvlib         │
+                         │    YOLOv4-Tiny       │
+                         │   Object Detection   │
+                         └──────────┬───────────┘
+                                    │
+                    ┌───────────────┴───────────────┐
+                    │                               │
+                    ▼                               ▼
+         ┌────────────────────┐         ┌────────────────────┐
+         │ Bounding Box Draw  │         │  Detected Objects  │
+         │ Labels + Confidence│         │  Unique Item Store │
+         └──────────┬─────────┘         └──────────┬─────────┘
+                    │                               │
+                    ▼                               ▼
+         ┌────────────────────┐         ┌────────────────────┐
+         │ Live Detection UI  │         │   Food Detection   │
+         │ Display with OpenCV│         │    Food Name       │
+         └────────────────────┘         └──────────┬─────────┘
+                                                    │
+                                                    ▼
+                                        ┌────────────────────┐
+                                        │ CalorieNinjas API  │
+                                        │ Nutrition Analysis │
+                                        └──────────┬─────────┘
+                                                    │
+                                                    ▼
+                                        ┌────────────────────┐
+                                        │ Nutrition Results  │
+                                        │ Fat, Protein, etc. │
+                                        └──────────┬─────────┘
+                                                    │
+                                                    ▼
+                                        ┌────────────────────┐
+                                        │       gTTS         │
+                                        │ Text-to-Speech     │
+                                        └──────────┬─────────┘
+                                                    │
+                                                    ▼
+                                        ┌────────────────────┐
+                                        │     playsound      │
+                                        │  Voice Playback    │
+                                        └────────────────────┘
+```
 
 ---
 
-## Project Structure
+# 🚀 Features
 
-```bash id="rl9lzc"
+## 👁️ Real-Time Object Detection
+
+- Detects common objects using webcam
+- Uses YOLOv4-Tiny for fast object detection
+- Displays bounding boxes and labels
+- Provides voice feedback using Text-to-Speech
+- Stores unique detected objects
+
+---
+
+## 🍔 Food Nutrition Analysis
+
+Retrieves nutritional information for food items using the CalorieNinjas API.
+
+### Displays:
+
+- Saturated Fat
+- Total Fat
+- Carbohydrates
+- Protein
+- Sugar
+- Sodium
+- Cholesterol
+
+---
+
+# 🛠️ Technologies Used
+
+- Python
+- OpenCV (`cv2`)
+- cvlib
+- YOLOv4-Tiny
+- gTTS
+- playsound
+- Requests API
+- CalorieNinjas API
+
+---
+
+# 📂 Project Structure
+
+```text
 project-folder/
 │
 ├── object_detection.py
@@ -61,28 +126,28 @@ project-folder/
 
 ---
 
-## Installation
+# ⚙️ Installation
 
-### 1. Clone the Repository
+## 1. Clone the Repository
 
-```bash id="gmb0aj"
+```bash
 git clone https://github.com/yourusername/realtime-object-detection.git
 cd realtime-object-detection
 ```
 
 ---
 
-### 2. Install Required Packages
+## 2. Install Required Packages
 
-```bash id="nn1g60"
+```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-## Requirements
+# 📦 Requirements
 
-```txt id="z3kl9m"
+```text
 opencv-python
 cvlib
 gtts
@@ -95,26 +160,28 @@ requests
 
 ---
 
-## Download YOLOv4-Tiny Files
+# ⬇️ Download YOLOv4-Tiny Files
 
 Download and place these files in the project directory:
 
-* `yolov4-tiny.cfg`
-* `yolov4-tiny.weights`
+```text
+yolov4-tiny.cfg
+yolov4-tiny.weights
+```
 
 ---
 
-# Real-Time Object Detection
+# 👁️ Real-Time Object Detection
 
-## Run the Application
+## ▶️ Run the Application
 
-```bash id="6l9j0h"
+```bash
 python object_detection.py
 ```
 
 ---
 
-## How It Works
+## 🧠 How It Works
 
 1. Opens the webcam
 2. Captures video frames
@@ -124,9 +191,9 @@ python object_detection.py
 
 ---
 
-## Example Output
+## 📌 Example Output
 
-```bash id="c6h3wy"
+```text
 Camera active. Press 'q' to finish.
 
 Detected: person
@@ -138,27 +205,27 @@ Speaking: I detected person, laptop, bottle
 
 ---
 
-# Food Nutrition Analysis
+# 🍎 Food Nutrition Analysis
 
-## Run the Food Nutrition Script
+## ▶️ Run the Food Nutrition Script
 
-```bash id="o0r2h4"
+```bash
 python food.py
 ```
 
 ---
 
-## Food API Function
+## 📌 Food API Function
 
-```python id="25j85m"
+```python
 food_facts("pizza")
 ```
 
 ---
 
-## Example Output
+## 📊 Example Output
 
-```bash id="zq69f8"
+```text
 Saturated Fat: 3.3
 Total Fat: 10.4
 Carbs: 33.2
@@ -170,63 +237,72 @@ Cholesterol: 18
 
 ---
 
-## Food Nutrition API
+# 🌐 Food Nutrition API
 
 The project uses the CalorieNinjas API to retrieve nutritional information.
 
-API Endpoint:
+## API Endpoint
 
-```bash id="0n6n3h"
+```text
 https://api.calorieninjas.com/v1/nutrition
 ```
 
 ---
 
-## Future Improvements
+# 📌 Future Improvements
 
-* Integrate food detection with nutrition analysis
-* Detect fruits and vegetables automatically
-* Add speech output for nutrition facts
-* Save detection history
-* Build a GUI dashboard
-* Deploy as desktop application
-
----
-
-## Troubleshooting
-
-### Webcam Not Working
-
-* Ensure webcam permissions are enabled
-* Close other applications using the camera
+- Integrate food detection with nutrition analysis
+- Detect fruits and vegetables automatically
+- Add speech output for nutrition facts
+- Save detection history
+- Build a GUI dashboard
+- Deploy as desktop application
+- Add mobile app support
+- Add calorie tracking history
 
 ---
 
-### Audio Not Playing
+# ⚠️ Troubleshooting
+
+## Webcam Not Working
+
+- Ensure webcam permissions are enabled
+- Close other applications using the camera
+
+---
+
+## Audio Not Playing
 
 Try installing:
 
-```bash id="xb2n9d"
+```bash
 pip install pygobject
 ```
 
 ---
 
-### Missing YOLO Files
+## Missing YOLO Files
 
 Ensure these files exist:
 
-* `yolov4-tiny.cfg`
-* `yolov4-tiny.weights`
+```text
+yolov4-tiny.cfg
+yolov4-tiny.weights
+```
 
 ---
 
-## Author
+# 👨‍💻 Author
 
-Developed by Anwar Mohammed
+Developed by **Anwar Mohammed**
+
+- Biomedical Engineering Student
+- AI & Computer Vision Enthusiast
 
 ---
 
-## License
+# 📜 License
 
 This project is open-source and available under the MIT License.
+
+---
