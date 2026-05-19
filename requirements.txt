@@ -1,0 +1,8 @@
+opencv-python
+numpy
+pillow
+requests
+gtts
+playsound==1.2.2
+tensorflow>=2.10,<2.15
+cvlib
